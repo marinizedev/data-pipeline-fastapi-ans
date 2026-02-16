@@ -1,9 +1,13 @@
 import pandas as pd
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
-engine = create_engine(
-    "mysql+pymysql://root:85731705VVAmv%25@localhost:3306/ans_despesas"
-)
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL)
 
 query = """
 SELECT

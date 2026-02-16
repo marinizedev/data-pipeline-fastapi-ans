@@ -1,9 +1,15 @@
 import pandas as pd
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine, text
 
+load_dotenv()
+
 # Conexão com o banco (PyMySQL)
+DATABASE_URL = os.getenv("DATABASE_URL")
+
 engine = create_engine(
-"mysql+pymysql://root:85731705VVAmv%25@localhost:3306/ans_despesas",
+DATABASE_URL,
 echo=False,
 future=True
 )

@@ -118,6 +118,14 @@ A solução foi organizada em **pipeline de dados e backend**, seguindo boas pr�
 
 ---
 
+## Configuração do Banco
+
+Este projeto utiliza variável de ambiente para a string de conexão.
+
+Defina a variável:
+
+DATABASE_URL = mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco
+
 ## Considerações Finais
 
 Este projeto prioriza:
