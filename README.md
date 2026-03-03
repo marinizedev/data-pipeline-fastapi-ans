@@ -169,11 +169,11 @@ export DATABASE_URL="mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco"
 
 Executar scripts na seguinte ordem:
 
-python scripts/01_extracao/extrair_dados.py
-python scripts/02_transform/consolidar_dados.py
-python scripts/02_transform/validacao_dados.py
-python scripts/02_transform/enriquecimento_dados.py
-python scripts/02_transform/agregacao_dados.py
+1. python scripts/01_extracao/extrair_dados.py
+2. python scripts/02_transform/consolidar_dados.py
+3. python scripts/02_transform/validacao_dados.py
+4. python scripts/02_transform/enriquecimento_dados.py
+5. python scripts/02_transform/agregacao_dados.py
 
 ### Inserir dados no banco
 
