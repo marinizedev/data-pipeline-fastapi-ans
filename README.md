@@ -3,7 +3,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
 
 # Pipeline de Dados e API REST — Estágio IntuitiveCare 2026
-Este repositório contém a solução para o **teste técnico de nivelamento** do processo seletivo de **Estágio na IntuitiveCare (2026)**.
+Este repositório apresenta a solução desenvolvida para o **teste técnico de nivelamento** do processo seletivo de **Estágio na IntuitiveCare (2026)**.
 
 O objetivo do projeto é demonstrar conhecimentos fundamentais em **manipulação de dados, organização de pipelines, boas práticas de desenvolvimento e capacidade analítica**, conforme as orientações fornecidas no enunciado oficial do teste.
 
@@ -53,55 +53,37 @@ A solução foi organizada em **pipeline de dados e backend**, seguindo boas pr�
 
 ## Estrutura do Repositório
 
-- /estagio-intuitivecare-dados/
-- |
-- |---- backend/
-- |
-    - |---- routers/
-        - |---- despesas.py
-        - |---- estatisticas.py
-        - |---- operadoras.py
-        - |
-    - |---- database.py
-    - |---- main.py
-    - |---- requeriments.txt
-    - |
-- |---- data/
-    - |---- processed/     # CSV base e CSV final
-    - |---- raw/      # arquivos originais
-- |
-- |---- docs/
-    - |---- teste_1_ingestao_e_consolidadacao.md
-    - |---- teste_2_transformacao_e_validacao.md
-    - |---- teste_3_sql_e_analise.md
-    - |---- teste_4_interface_web.md
-    - |
-- |---- scripts/
-    - |---- 01_extracao/
-        - |---- extrair_dados.py
-        - |
-    - |---- 02_transform/
-        - |---- agregacao_dados.py
-        - |---- consolidar_dados.py
-        - |---- enriquecimento_dados.py
-        - |---- validacao_dados.py
-        - |
-    - |---- 03_inserts_staging/
-        - |---- agregado.py
-        - |---- consolidado.py
-        - |---- enriquecido.py
-        - |
-    - |---- 04_inserts_oficiais
-        - |---- agregado.py
-        - |---- consolidado.py
-        - |---- enriquecido.py
-        - |
-- |---- sql
-    - |---- ddl_ans_despesas.sql
-    - |---- ddl_queries_analytics.sql
-    - |---- staging.sql
-    - |
-- |---- README.md
+```bash
+estagio-intuitivecare-dados/
+│
+├── backend/
+│   ├── routers/
+│   │   ├── despesas.py
+│   │   ├── estatisticas.py
+│   │   └── operadoras.py
+│   ├── database.py
+│   ├── main.py
+│   └── requirements.txt
+│
+├── data/
+│   ├── processed/
+│   └── raw/
+│
+├── docs/
+│   ├── teste_1_ingestao_e_consolidadacao.md
+│   ├── teste_2_transformacao_e_validacao.md
+│   ├── teste_3_sql_e_analise.md
+│   └── teste_4_interface_web.md
+│
+├── scripts/
+│   ├── 01_extracao/
+│   ├── 02_transform/
+│   ├── 03_inserts_staging/
+│   └── 04_inserts_oficiais/
+│
+├── sql/
+└── README.md
+```
 
 ---
 
@@ -126,62 +108,80 @@ A solução foi organizada em **pipeline de dados e backend**, seguindo boas pr�
 
 Este projeto utiliza variável de ambiente para a string de conexão.
 
-Defina a variável:
-
-DATABASE_URL = mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco
+```bash
+DATABASE_URL=mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco
+```
 
 ## Como Reproduzir o Projeto
 
 ### Clonar o repositório
 
+```bash
 git clone https://github.com/marinizedev/estagio-intuitivecare-dados.git
 cd estagio-intuitivecare-dados
+```
 
 ### Criar ambiente virtual
 
+```bash
 python -m venv venv
+```
 
 Ativar:
 
 Windows:
 
+```bash
 venv\Scripts\activate
+```
 
 Linux/Mac:
 
+```bash
 source venv/bin/activate
+```
 
 ### Instalar dependências
 
+```bash
 pip install -r requirements.txt
+```
 
 ### Configurar variável de ambiente
 
 No Windows (PowerShell):
 
+```bash
 setx DATABASE_URL "mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco"
+```
 
 No Linux/Mac:
 
+```bash
 export DATABASE_URL="mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco"
+```
 
 ### Executar pipeline
 
 Executar scripts na seguinte ordem:
 
-1. python scripts/01_extracao/extrair_dados.py
-2. python scripts/02_transform/consolidar_dados.py
-3. python scripts/02_transform/validacao_dados.py
-4. python scripts/02_transform/enriquecimento_dados.py
-5. python scripts/02_transform/agregacao_dados.py
+```bash
+python scripts/01_extracao/extrair_dados.py
+python scripts/02_transform/consolidar_dados.py
+python scripts/02_transform/validacao_dados.py
+python scripts/02_transform/enriquecimento_dados.py
+python scripts/02_transform/agregacao_dados.py
+```
 
 ### Inserir dados no banco
 
-Executar scripts de staging e inserção final.
+Executar os scripts das pastas `03_inserts_staging/` e `04_inserts_oficiais/`.
 
 ### Subir a API
 
+```bash
 uvicorn backend.main:app --reload
+```
 
 Acessar:
 
@@ -193,11 +193,30 @@ Documentação automática:
 
 http://127.0.0.1:8000/docs
 
+### Exemplos de Endpoints
 
+- `GET /operadoras`
+- `GET /despesas`
+- `GET /estatisticas`
+
+Mini exemplo:
+
+```json
+{
+  "total": 120,
+  "pagina": 1,
+  "dados": [
+    {
+      "registro_ans": "12345",
+      "despesa_total": 987654.32
+    }
+  ]
+}
+```
 
 ## Considerações Finais
 
-Este projeto prioriza:
+Este projeto foi desenvolvido priorizando:
 
 - Clareza e organização técnica
 - Justificativa das decisões adotadas
