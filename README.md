@@ -1,4 +1,8 @@
-# Estágio IntuitiveCare 2026 — Projeto de Dados
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+
+# Pipeline de Dados e API REST — Estágio IntuitiveCare 2026
 Este repositório contém a solução para o **teste técnico de nivelamento** do processo seletivo de **Estágio na IntuitiveCare (2026)**.
 
 O objetivo do projeto é demonstrar conhecimentos fundamentais em **manipulação de dados, organização de pipelines, boas práticas de desenvolvimento e capacidade analítica**, conforme as orientações fornecidas no enunciado oficial do teste.
@@ -126,6 +130,71 @@ Defina a variável:
 
 DATABASE_URL = mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco
 
+## Como Reproduzir o Projeto
+
+### Clonar o repositório
+
+git clone https://github.com/marinizedev/estagio-intuitivecare-dados.git
+cd estagio-intuitivecare-dados
+
+### Criar ambiente virtual
+
+python -m venv venv
+
+Ativar:
+
+Windows:
+
+venv\Scripts\activate
+
+Linux/Mac:
+
+source venv/bin/activate
+
+### Instalar dependências
+
+pip install -r requirements.txt
+
+### Configurar variável de ambiente
+
+No Windows (PowerShell):
+
+setx DATABASE_URL "mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco"
+
+No Linux/Mac:
+
+export DATABASE_URL="mysql+pymysql://usuario:senha@localhost:3306/nome_do_banco"
+
+### Executar pipeline
+
+Executar scripts na seguinte ordem:
+
+python scripts/01_extracao/extrair_dados.py
+python scripts/02_transform/consolidar_dados.py
+python scripts/02_transform/validacao_dados.py
+python scripts/02_transform/enriquecimento_dados.py
+python scripts/02_transform/agregacao_dados.py
+
+### Inserir dados no banco
+
+Executar scripts de staging e inserção final.
+
+### Subir a API
+
+uvicorn backend.main:app --reload
+
+Acessar:
+
+API:
+
+http://127.0.0.1:8000
+
+Documentação automática:
+
+http://127.0.0.1:8000/docs
+
+
+
 ## Considerações Finais
 
 Este projeto prioriza:
@@ -140,6 +209,6 @@ O README reflete a **visão geral do projeto**, enquanto os detalhes técnicos d
 
 ---
 
-## Autora
+## Desenvolvido por:
 
 **Marinize Santana** – desenvolvimento da solução como parte do teste técnico de nivelamento do processo seletivo de **Estágio na IntuitiveCare (2026)**.
