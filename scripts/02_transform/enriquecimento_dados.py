@@ -78,5 +78,5 @@ df_final["Modalidade"] = df_final["Modalidade"].fillna("Desconhecida")
 # -------------------------------
 df_final.to_csv(output_file, sep=";", index=False, encoding="latin1")
 
-print("✅ Enriquecimento concluído com sucesso!")
+print(" Enriquecimento concluído com sucesso!")
 print(f"Arquivo gerado: {output_file}")
