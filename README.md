@@ -94,10 +94,10 @@ data-pipeline-fastapi-ans/
 │   └── raw/
 │
 ├── docs/
-│   ├── pipeline_ingestao.md
-│   ├── pipeline_transformacao.md
-│   ├── analise_sql.md
-│   └── api_interface.md
+│   ├── 01_pipeline_ingestao.md
+│   ├── 02_pipeline_transformacao.md
+│   ├── 03_analise_sql.md
+│   └── 04_api_interface.md
 │
 ├── scripts/
 │   ├── 01_extracao/
