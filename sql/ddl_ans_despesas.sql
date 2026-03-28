@@ -1,10 +1,10 @@
 -- ==============================================================================
--- Teste 3 - Criação das tabelas
--- Banco compatível: MySQL 8.0.32.0
+-- Criação das tabelas
+-- Banco compatível: MySQL 8.0
 -- Origem dos dados:
--- - 02_base_consolidada_2025.csv (consolidado_despesas.csv | Teste 1.3)
--- - 04_base_enriquecida_2025.csv (dados cadastrais tratados | Teste 2.2)
--- - despesas_agregadas.csv (Teste 2.3)
+-- - 02_base_consolidada_2025.csv 
+-- - 04_base_enriquecida_2025.csv 
+-- - despesas_agregadas.csv 
 -- Objetivo:
 -- Criar a estrutura de tabelas para carga e análise dos dados de despesas da ANS
 -- ==============================================================================
